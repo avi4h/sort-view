@@ -13,15 +13,6 @@ An animated visualization of sorting algorithms.
 <li>Shell Sort</li>
 </ul>
 
-<h3>Implemented</h3>
-<ul>
-<li>Merge Sort</li>
-</ul>
-
-<h3>To Do</h3>
-<ul>
-<li>Counting Sort</li>
-</ul>
 
 <h2>How Does It Work</h2>
 
