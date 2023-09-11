@@ -1,6 +1,6 @@
 # Sorting Visualizer
 
-[Sorting Visualizer](avi4h.github.io/sorting-visualizer/) is a web application that provides an animated visualization of various sorting algorithms. With this tool, you can see how algorithms like Bubble Sort, Comb Sort, Heap Sort, Insertion Sort, Selection Sort, and Shell Sort work in action. This README file will guide you through the usage and features of the application.
+[Sorting Visualizer](https://avi4h.github.io/sorting-visualizer/) is a web application that provides an animated visualization of various sorting algorithms. With this tool, you can see how algorithms like Bubble Sort, Comb Sort, Heap Sort, Insertion Sort, Selection Sort, and Shell Sort work in action. This README file will guide you through the usage and features of the application.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Sorting algorithms are fundamental in computer science, and understanding how th
 
 ## Demo
 
-You can check out a live demo of sorting visualizer - [here](avi4h.github.io/sorting-visualizer/).
+You can check out a live demo of sorting visualizer - [here](https://avi4h.github.io/sorting-visualizer/).
 
 ## Algorithms
 
