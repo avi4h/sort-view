@@ -8,8 +8,7 @@
 	<img src="https://img.shields.io/github/languages/top/avi4h/sort-view?logo=javascript" alt="repo-top-language">
 </p>
 
-A web application to visualize various sorting algorithms interactively. This tool helps users understand sorting algorithms by showing step-by-step animations and allowing comparisons between different algorithms.
-
+A web application to visualize various sorting algorithms interactively. 
 
 ## Features
 
