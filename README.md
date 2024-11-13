@@ -1,127 +1,55 @@
-# Sorting Visualizer
+# `Sort-View`
 
-[Sorting Visualizer](https://avi4h.github.io/sorting-visualizer/) is a web application that provides an animated visualization of various sorting algorithms. With this tool, you can see how algorithms like Bubble Sort, Comb Sort, Heap Sort, Insertion Sort, Selection Sort, and Shell Sort work in action. This README file will guide you through the usage and features of the application.
+<p align="left">
+    <img src="https://img.shields.io/badge/version-v0.5-blue" alt="version" >
+	<img src="https://img.shields.io/github/last-commit/avi4h/sort-view?logo=git" alt="last-commit">
+	<img src="https://img.shields.io/github/languages/count/avi4h/sort-view?logo=googletagmanager" alt="repo-language-count">
+    <img src="https://img.shields.io/github/issues-raw/avi4h/sort-view?logo=github" alt="repo-issues">
+	<img src="https://img.shields.io/github/languages/top/avi4h/sort-view?logo=javascript" alt="repo-top-language">
+</p>
 
-## Table of Contents
+A web application to visualize various sorting algorithms interactively. This tool helps users understand sorting algorithms by showing step-by-step animations and allowing comparisons between different algorithms.
 
-- [Introduction](#introduction)
-- [Demo](#demo)
-- [Algorithms](#algorithms)
-- [How Does It Work](#how-does-it-work)
-- [Usage](#usage)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [License](#license)
 
-## Introduction
+## Features
 
-Sorting algorithms are fundamental in computer science, and understanding how they work is essential for any programmer. VisualSort aims to make this learning process more engaging and intuitive by providing animated visualizations of popular sorting algorithms. Whether you're a beginner looking to grasp the basics or an experienced developer wanting to explore algorithm behavior in depth, sorting visualizer can help.
+**Interactive Visualizations**: Select a sorting algorithm and visualize each step.
 
-## Demo
+**Multiple Sorting Algorithms**: Includes popular sorting algorithms.
 
-You can check out a live demo of sorting visualizer - [here](https://avi4h.github.io/sorting-visualizer/).
+**Customizable Parameters**: Adjust settings like array size and sorting speed.
+
+## Stack
+
+<p align="center"> 
+    <img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React"> 
+    <img src="https://img.shields.io/badge/Tailwind%20CSS-38B2AC.svg?style=flat&logo=Tailwind%20CSS&logoColor=white" alt="Tailwind CSS">
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript"> 
+    <img src="https://img.shields.io/badge/Framer%20Motion-EB4559.svg?style=flat&logo=framer&logoColor=white" alt="Framer Motion">
+    <img src="https://img.shields.io/badge/rc--slider-5DBCD2.svg?style=flat&logo=slider&logoColor=white" alt="rc-slider">
+    <img src="https://img.shields.io/badge/react--select-5DADE2.svg?style=flat&logo=react&logoColor=white" alt="react-select">
+</p>
 
 ## Algorithms
 
-It currently supports the following sorting algorithms:
+##### 1. Bubble Sort:  Worst - O(n²), Average - O(n²), Best - O(n)
+Repeatedly steps through the list, compares adjacent elements, and swaps them if needed. It’s a basic and inefficient sorting method.
 
-- Bubble Sort
-- Comb Sort
-- Heap Sort
-- Insertion Sort
-- Selection Sort
-- Shell Sort
+##### 2. Comb Sort : Worst - O(n²), Average - Ω(n²/2ᵖ), Best - O(n log n)
+An improvement on Bubble Sort that reduces the number of comparisons and swaps by initially considering distant elements and gradually reducing the gap.
 
-These algorithms have been implemented and animated to help you visualize their inner workings step by step.
+##### 3. Heap Sort : O(n log n)
+A comparison-based technique using a binary heap structure. Elements are sorted by building a heap and repeatedly extracting the maximum element.
 
-## How Does It Work
+##### 4. Insertion Sort : Worst - O(n²), Average - O(n²), Best - O(n)
+Iteratively builds a sorted list by taking each new element and inserting it into its correct position within the sorted portion.
 
-### Animation Object
+##### 5. Selection Sort : O(n²)
+Divides the list into sorted and unsorted portions and finds the minimum element from the unsorted portion to swap with the first unsorted element.
 
-The core here is animation object, which contains frames that store the indices of elements to be highlighted and/or swapped during the sorting process. These frames essentially represent the "steps" of the algorithm.
+##### 6. Shell Sort : Worst - O(n²), Average - O(n log n), Best - O(n log n)
+A variation of Insertion Sort that starts by sorting elements far apart and reduces the gap, improving efficiency over regular Insertion Sort.
 
-Here's an example of what an animation object might look like:
 
-```javascript
-animation = {
-    "frames": [
-        {
-            "elements": [],
-            "highlights": [0, 1]
-        },
-        {
-            "elements": [0, 1],
-            "highlights": [0, 1]
-        },
-        // Additional frames...
-    ]
-}
-```
-
-## Usage
-
-The animation object is created within a sorting algorithm function. Specific events, such as element comparisons and swaps, are recorded as frames of the animation.
-Here's an example of how the Bubble Sort algorithm is implemented :
-
-```javascript
-class Algorithms {
-    static bubble(elements, order) {
-        let solution = new Animation();
-        let swapped = false;
-
-        for (let i = 0; i < elements.length; ++i) {
-            swapped = false;
-            for (let j = 0; j < elements.length - 1; ++j) {
-                solution.addFrame(new Frame([], [j, j + 1])); // Record to-be-highlighted elements
-
-                if (order == "desc" ? elements[j] < elements[j + 1] : elements[j] > elements[j + 1]) {
-                    swapped = true;
-
-                    const temp = elements[j];
-                    elements[j] = elements[j + 1];
-                    elements[j + 1] = temp;
-
-                    solution.addFrame(new Frame([j, j + 1], [j, j + 1])); // Record to-be-swapped & to-be-highlighted elements
-                }
-            }
-
-            if (!swapped) {
-                break;
-            }
-        }
-        return solution;
-    }
-}
-```
-
-## Animating the Algorithm
-The animation is played by a function that highlights the current elements in a frame and/or swaps them. This step-by-step animation helps users understand how the sorting algorithm progresses.
-
-## Installation
-If you want to run this visualizer locally or contribute to its development, follow these steps:
-
-Clone the repository:
-```
-git clone https://github.com/yourusername/sorting-visualizer.git
-```
-
-Install the necessary dependencies:
-```
-npm install
-```
-
-Start the development server:
-```
-npm start
-```
-
-Access the application in your web browser at http://localhost:3000.
-
-## Contributing
-
-Contributions to this project are welcome! Whether you want to add support for new sorting algorithms, improve the user interface, or fix bugs, please feel free to fork the [repository](https://github.com/avi4h/sorting-visualizer/) and submit a pull request.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/license/cpl1-0-txt/) file for details.
 
 
