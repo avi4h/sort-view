@@ -1,22 +1,20 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import Select from 'react-select'
-import Slider from 'rc-slider'
-import 'rc-slider/assets/index.css'
+import React from 'react';
+import Select from 'react-select';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const algorithms = [
   { value: 'bubble', label: 'Bubble Sort' },
-  { value: 'comb', label: 'Comb Sort' },
-  { value: 'heap', label: 'Heap Sort' },
   { value: 'insertion', label: 'Insertion Sort' },
   { value: 'selection', label: 'Selection Sort' },
-  { value: 'shell', label: 'Shell Sort' },
-]
+  { value: 'quick', label: 'Quick Sort' },
+  { value: 'merge', label: 'Merge Sort' }
+];
 
 const orderOptions = [
   { value: 'asc', label: 'Ascending' },
   { value: 'desc', label: 'Descending' },
-]
+];
 
 function Controls({
   speed,
@@ -30,113 +28,127 @@ function Controls({
   setOrder,
   runAlgo,
   stopAnimation,
-  reset,
-  restart
+  reset
 }) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md space-y-6">
-      <div className="space-y-2">
-        <label htmlFor="speed" className="block text-sm font-medium text-gray-700">Speed</label>
+    <div className="space-y-5">
+      <div className="pt-3">
+        <label className="block text-sm font-normal text-gray-700 mb-1">
+          <span className="text-sm font-medium text-gray-700 mb-1">Speed : </span>
+          {speed}
+        </label>
         <Slider
-          min={1}
-          max={100}
+          min={5}
+          max={95}
+          step={5}
           value={speed}
           onChange={updateSpeed}
           disabled={isRunning}
-          railStyle={{ backgroundColor: '#E5E7EB' }}
-          trackStyle={{ backgroundColor: '#3B82F6' }}
-          handleStyle={{
-            borderColor: '#3B82F6',
-            backgroundColor: '#3B82F6',
-          }}
+          styles={
+            {
+              track: {
+                backgroundColor: '#34d399',
+              },
+              handle: {
+                cursor: "pointer",
+                backgroundColor: 'white',
+                borderColor: '#34d399',
+
+              }
+            }
+          }
         />
-        <span className="text-sm text-gray-600">{101 - speed}</span>
       </div>
-      <div className="space-y-2">
-        <label htmlFor="elements" className="block text-sm font-medium text-gray-700">Elements</label>
+      <div>
+        <label className="block text-sm font-normal text-gray-700 mb-1">
+          <span className="text-sm font-medium text-gray-700 mb-1">Elements : </span>
+          {totalElements}
+        </label>
         <Slider
-          min={5}
-          max={30}
+          min={15}
+          max={85}
+          step={5}
           value={totalElements}
           onChange={setTotalElements}
           disabled={isRunning}
-          railStyle={{ backgroundColor: '#E5E7EB' }}
-          trackStyle={{ backgroundColor: '#3B82F6' }}
-          handleStyle={{
-            borderColor: '#3B82F6',
-            backgroundColor: '#3B82F6',
-          }}
+          styles={
+            {
+              track: {
+                backgroundColor: '#34d399',
+              },
+              handle: {
+                cursor: "pointer",
+                backgroundColor: 'white',
+                borderColor: '#34d399',
+              },
+            }
+          }
         />
-        <span className="text-sm text-gray-600">{totalElements}</span>
       </div>
-      <div className="space-y-2">
-        <label htmlFor="algorithms" className="block text-sm font-medium text-gray-700">Algorithm</label>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Algorithm</label>
         <Select
+          className='text-sm'
           options={algorithms}
           value={algorithms.find(algo => algo.value === selectedAlgo)}
           onChange={(selected) => setSelectedAlgo(selected.value)}
           isDisabled={isRunning}
-          className="react-select-container"
-          classNamePrefix="react-select"
+          theme={(theme) => ({
+            ...theme,
+            borderRadius: 3,
+            colors: {
+              ...theme.colors,
+              primary50: '#d1fae5',
+              primary25: '#d1fae5',
+              primary: '#10b981',
+            },
+          })}
         />
       </div>
-      <div className="space-y-2">
-        <label htmlFor="order" className="block text-sm font-medium text-gray-700">Order</label>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Order</label>
         <Select
+          className='text-sm'
           options={orderOptions}
           value={orderOptions.find(o => o.value === order)}
           onChange={(selected) => setOrder(selected.value)}
           isDisabled={isRunning}
-          className="react-select-container"
-          classNamePrefix="react-select"
+          theme={(theme) => ({
+            ...theme,
+            borderRadius: 3,
+            colors: {
+              ...theme.colors,
+              primary50: '#d1fae5',
+              primary25: '#d1fae5',
+              primary: '#10b981',
+            },
+          })}
         />
       </div>
-      <div className="flex flex-wrap justify-center gap-2">
-        <motion.button
+      <div className="flex space-x-3 pt-2">
+        <button
           onClick={runAlgo}
           disabled={isRunning}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          aria-label="Start sorting"
+          className="px-6 py-2 text-sm text-gray-800 rounded-md border shadow-sm bg-emerald-50 border-emerald-500  hover:shadow-lg hover:bg-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white   "
         >
-          Sort
-        </motion.button>
-        <motion.button
+          Start
+        </button>
+        <button
           onClick={stopAnimation}
           disabled={!isRunning}
-          className="px-4 py-2 bg-red-500 text-white rounded-md disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-300"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          aria-label="Stop sorting"
+          className="px-6 py-2 text-sm text-gray-800 rounded-md border shadow-sm bg-red-50 border-red-500 hover:shadow-lg hover:bg-red-200  disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-red-50 "
         >
           Stop
-        </motion.button>
-        <motion.button
+        </button>
+        <button
           onClick={reset}
-          className="px-4 py-2 bg-green-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          aria-label="Reset visualization"
+          className="px-6 py-2 text-sm text-gray-800 rounded-md border shadow-sm bg-slate-50 border-slate-500 hover:shadow-lg hover:bg-slate-200"
         >
           Reset
-        </motion.button>
-        <motion.button
-          onClick={restart}
-          className="px-4 py-2 bg-yellow-500 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          aria-label="Restart with same elements"
-        >
-          Restart
-        </motion.button>
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Controls
+export default Controls;
