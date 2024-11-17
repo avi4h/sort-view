@@ -8,7 +8,7 @@
 	<img src="https://img.shields.io/github/languages/top/avi4h/sort-view?logo=javascript" alt="repo-top-language">
 </p>
 
-A web application to visualize various sorting algorithms interactively. 
+A web application to visualize various sorting algorithms. 
 
 ## Features
 
@@ -18,7 +18,7 @@ A web application to visualize various sorting algorithms interactively.
 
 **Customizable Parameters**: Adjust settings like array size and sorting speed.
 
-## Stack
+## Stack & Dependencies
 
 <p align="center"> 
     <img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React"> 
